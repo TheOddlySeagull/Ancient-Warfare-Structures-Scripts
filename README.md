@@ -56,7 +56,7 @@ The script will then generate a town wall blueprint for each size between the mi
 <details>
     <summary>Click to reveal a usage example.</summary>
       
-    bash town_wall_generator.sh 5 10 2  
+    bash town_wall_generator.sh 5 15 2  
       
     Will generate:  
       
