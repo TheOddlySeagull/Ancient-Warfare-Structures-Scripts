@@ -12,18 +12,18 @@ They are meant to be run from the root of the repository.
 
 # Script 1: `wood_converting_script.sh`
 
-This script will convert an oak wood structure from the `structures` folder into all wood types from `Vanilla`, `Biomes O' Plenty` and `Rustic` mods.  
+This script will convert any oak wood structure from the `template` folder into all wood types from `Vanilla`, `Biomes O' Plenty` and `Rustic` mods.  
 The new structures will be placed in the `structures` folder, organized in subfolders by mod name.
 
 ## Usage
 
-With the desired structure(s) in the `structures` folder, run the script with the following command:
+With the desired structure(s) in the `template` folder, run the script with the following command:
 
 ```
 bash wood_converting_script.sh
 ```
 
-The script will then generate the structure in all wood types. This totals to 24 structures per structure file in the `structures` folder.  
+The script will then generate the structure in all wood types. This totals to 24 structures for every oak structures in the `template` folder.  
 ### Note:
 - This script does not support fence gates
 - This script does not support doors
