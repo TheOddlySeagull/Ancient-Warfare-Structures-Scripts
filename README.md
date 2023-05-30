@@ -27,7 +27,7 @@ The script will then generate the structure in all wood types. This totals to 24
 ### Note:
 - This script does not support fence gates
 - This script does not support doors
-For your structure to be compatible with the script, make sure to name your structure so that it ends with `_oak`.
+- For your structure to be compatible with the script, make sure to name your structure so that it ends with `_oak`.
 ---
 
 # Script 2: `town_wall_generator.sh`
