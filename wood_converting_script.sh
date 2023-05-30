@@ -9,6 +9,13 @@ original_wood_type="oak"
 
 #cleaning up and creation of the local folders
 function cleanup_folder {
+    
+    #If the ./structures/ folder does not exist, we will create it.
+    if [ ! -d ./structures/ ]; then
+        mkdir ./structures/
+        echo "Created folder ./structures/"
+    fi
+
     #If the ./structures/$1/ folder does not exist, we will create it. If it does, we will clean it up.
     if [ ! -d ./structures/$1/ ]; then
         mkdir ./structures/$1/
