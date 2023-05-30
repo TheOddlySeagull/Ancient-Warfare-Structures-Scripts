@@ -23,8 +23,11 @@ With the desired structure(s) in the `structures` folder, run the script with th
 bash wood_converting_script.sh
 ```
 
-The script will then generate the structure in all wood types. This totals to 24 structures per structure file in the `structures` folder.
-
+The script will then generate the structure in all wood types. This totals to 24 structures per structure file in the `structures` folder.  
+### Note:
+- This script does not support fence gates
+- This script does not support doors
+For your structure to be compatible with the script, make sure to name your structure so that it ends with `_oak`.
 ---
 
 # Script 2: `town_wall_generator.sh`
