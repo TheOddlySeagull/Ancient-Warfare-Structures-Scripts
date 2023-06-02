@@ -45,14 +45,18 @@ You can also specify whether you want towers or walls on both sides of the gates
 Run the script with the following command:
 
 ```
-bash town_wall_generator.sh $1 $2 $3
+bash town_wall_generator.sh <start_size> <end_size> <walls_between_towers>
+```
+*or*  
+```
+python3 town_wall_generator.py <start_size> <end_size> <walls_between_towers>
 ```
 
 Where:
 
-- `$1` is the minimum number of walls in the town wall blueprint.
-- `$2` is the maximum number of walls in the town wall blueprint.
-- `$3` is the number of walls between two towers.
+- `start_size` is the minimum number of walls in the town wall blueprint.
+- `end_size` is the maximum number of walls in the town wall blueprint.
+- `walls_between_towers` is the number of walls between two towers.
 
 The script will then generate a town wall blueprint for each size between the minimum and maximum number of walls.
 
@@ -60,6 +64,8 @@ The script will then generate a town wall blueprint for each size between the mi
     <summary>Click to reveal a usage example.</summary>
       
     bash town_wall_generator.sh 5 15 2  
+    or  
+    python3 town_wall_generator.py 5 15 2
       
     Will generate:  
       
