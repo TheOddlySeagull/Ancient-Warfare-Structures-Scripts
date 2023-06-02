@@ -32,8 +32,8 @@ echo "wallPatterns:" > generated_walls.txt
 # We check if parameters are correct:
 ##############################################################################################################
 
-if [ $wall_size_start -lt 3 ]; then
-    echo "Error: minimum ($1) must at least be 3."
+if [ $wall_size_start -lt 5 ]; then
+    echo "Error: minimum ($1) must at least be 5."
     exit 1
 fi
 if [ $wall_size_end -lt $wall_size_start ]; then
