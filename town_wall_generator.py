@@ -87,7 +87,7 @@ else:
 # We generate the walls:
 ##############################################################################################################
 
-for wall_size in range(wall_size_start_i, wall_size_end_i):
+for wall_size in range(wall_size_start_i, wall_size_end_i + 1):
     # We generate the empty wall and reset the counters:
     generated_wall = ''
     half_wall_element_count_processed = 0
