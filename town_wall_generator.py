@@ -1,25 +1,17 @@
 # This script will generate AW structure town wall blueprint strings.
 
-import os
 import sys
 
-# Set the size of the wall to generate:
-wall_size_start_s = sys.argv[1]
-wall_size_end_s = sys.argv[2]
-wall_size_start_i = int(wall_size_start_s)
-wall_size_end_i = int(wall_size_end_s)
-
-
-# Set the number of elements between 2 towers:
-wall_tower_spacing_i = int(sys.argv[3])
+wall_size_start_i = 0
+wall_size_end_i = 0
+wall_tower_spacing_i = 0
+wall_size_start_s = str(wall_size_start_i)
+wall_size_end_s = str(wall_size_end_i)
 wall_tower_spacing_s = str(wall_tower_spacing_i)
 
-# Set if we don't care, or want 2 towers or walls at the gate:
+# Set if the gate has towers or not:
 wall_gate_towers_odd = 1
 wall_gate_towers_even = 1
-#0: walls on each side of the gate
-#1: towers on each side of the gate
-#2: we don't care
 
 # Set the wall element ids:
 wall_angle_id = '0'
@@ -29,25 +21,103 @@ wall_gate_even_left_id = '3'
 wall_gate_even_right_id = '4'
 wall_tower_id = '5'
 
+##############################################################################################################
+# Function to ask the user for the wall element ids:
+##############################################################################################################
+
+def AskWallIDs():
+
+    global wall_angle_id, wall_straight_id, wall_gate_odd_id, wall_gate_even_left_id, wall_gate_even_right_id, wall_tower_id
+
+    print("Current wall element ids:")
+    print("Angle: " + wall_angle_id)
+    print("Straight: " + wall_straight_id)
+    print("Gate (odd): " + wall_gate_odd_id)
+    print("Gate (even, left): " + wall_gate_even_left_id)
+    print("Gate (even, right): " + wall_gate_even_right_id)
+    print("Tower: " + wall_tower_id)
+
+    print("Do you want to change the wall element ids? (y/n)")
+    change_wall_element_ids = input()
+    if change_wall_element_ids == 'y':
+
+        # We ask the user for the wall element ids:
+        wall_angle_id = input("Enter the wall angle element id: ")
+        wall_straight_id = input("Enter the wall straight element id: ")
+        wall_gate_odd_id = input("Enter the wall gate element id (odd): ")
+        wall_gate_even_left_id = input("Enter the wall gate element id (even, left): ")
+        wall_gate_even_right_id = input("Enter the wall gate element id (even, right): ")
+        wall_tower_id = input("Enter the wall tower element id: ")
+
+##############################################################################################################
+# Function to ask the user for the wall sizes:
+##############################################################################################################
+
+def AskWallSizes():
+
+    global wall_size_start_i, wall_size_end_i, wall_tower_spacing_i, wall_size_start_s, wall_size_end_s, wall_tower_spacing_s
+
+    # We ask the user for the wall sizes:
+    wall_size_start_s = input("Enter the minimum wall size (must be at least 5): ")
+    wall_size_end_s = input("Enter the maximum wall size (must be greater than minimum): ")
+    wall_size_start_i = int(wall_size_start_s)
+    wall_size_end_i = int(wall_size_end_s)
+    # We ask the user for the number of elements between 2 towers:
+    wall_tower_spacing_s = input("Enter the number of straight walls between 2 towers (must be greater than 0): ")
+    wall_tower_spacing_i = int(wall_tower_spacing_s)
+
+    # We check if parameters are correct:
+    CheckSizes()
+
+##############################################################################################################
+# Function to ask the user the gate details:
+##############################################################################################################
+
+def AskGateDetails():
+    
+    global wall_gate_towers_odd, wall_gate_towers_even
+
+    print("Currently, the script will generate 2 towers at the gates (odd and even).")
+    print("Do you want to change this? (y/n)")
+    change_gate_details = input()
+    if change_gate_details == 'y':
+        print("Use 0 for walls on each side of the gate, 1 for towers on each side of the gate, or 2 if you don't care.")
+        wall_gate_towers_odd = input("Enter the gate details for odd walls: ")
+        wall_gate_towers_even = input("Enter the gate details for even walls: ")
+
+
+##############################################################################################################
+# We check if parameters are correct:
+##############################################################################################################
+
+def CheckSizes():
+
+    global wall_size_start_i, wall_size_end_i, wall_tower_spacing_i, wall_size_start_s, wall_size_end_s, wall_tower_spacing_s
+
+    if wall_size_start_i < 5:
+        print("Error: minimum (" + wall_size_start_s + ") must at least be 5.")
+        sys.exit(1)
+    if wall_size_end_i < wall_size_start_i:
+        print("Error: maximum (" + wall_size_end_s + ") must be greater than minimum (" + wall_size_start_s + ").")
+        sys.exit(1)
+    if wall_tower_spacing_i < 0:
+        print("Error: tower spacing (" + wall_tower_spacing_s + ") must be greater than 0.")
+        sys.exit(1)
+
+##############################################################################################################
+# We ask the user for the wall sizes:
+##############################################################################################################
+
+AskWallSizes()
+AskWallIDs()
+AskGateDetails()
+
 print("Generating walls from size " + wall_size_start_s + " to " + wall_size_end_s + ", with " + wall_tower_spacing_s + " straight walls between 2 towers.")
 
 #We create or clean a file called "generated_walls.txt" to store the generated walls:
 f = open("generated_walls.txt", "w")
 f.write("wallPatterns:\n")
 
-##############################################################################################################
-# We check if parameters are correct:
-##############################################################################################################
-
-if wall_size_start_i < 5:
-    print("Error: minimum (" + wall_size_start_s + ") must at least be 5.")
-    sys.exit(1)
-if wall_size_end_i < wall_size_start_i:
-    print("Error: maximum (" + wall_size_end_s + ") must be greater than minimum (" + wall_size_start_s + ").")
-    sys.exit(1)
-if wall_tower_spacing_i < 0:
-    print("Error: tower spacing (" + wall_tower_spacing_s + ") must be greater than 0.")
-    sys.exit(1)
 
 ##############################################################################################################
 # We generate the gate segments:
