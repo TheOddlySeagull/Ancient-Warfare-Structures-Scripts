@@ -38,7 +38,7 @@ This script is used for `AW2 towns`, particularly `walled towns`. In the town's 
 This task is straightforward for towns with less than 7 walls, but it becomes confusing and tedious as the number of walls increases.
 
 The purpose of this new script is to `generate blueprints for town walls` of any size in just a second. It offers modularity, allowing you to adjust the number of walls between two towers.  
-You can also specify whether you want towers or walls on both sides of the gates. This functionality applies to town walls ranging from 3 walls in length up to an impressive 1000 walls or even more!
+You can also specify whether you want towers or walls on both sides of the gates. This functionality applies to town walls ranging from 5 walls in length up to an impressive 1000 walls or even more!
 
 ## Usage
 
@@ -47,10 +47,7 @@ Run the script with the following command:
 ```
 bash town_wall_generator.sh <start_size> <end_size> <walls_between_towers>
 ```
-*or*  
-```
-python3 town_wall_generator.py <start_size> <end_size> <walls_between_towers>
-```
+
 
 Where:
 
@@ -106,7 +103,40 @@ The script will generate a `generated_walls.txt` file in the source folder.
 
 ---
 
+# Script 3: `town_wall_generator.py`
+
+`town_wall_generator.py` is a `Python` version of `town_wall_generator.sh`. It relies on user input rather than parameters.
+
+## Usage
+
+Run the script with the following command:
+
+```
+python3 town_wall_generator.py
+```
+
+The script will then ask you to input the following values:
+- `start_size` is the minimum number of walls in the town wall blueprint.
+- `end_size` is the maximum number of walls in the town wall blueprint.
+- `walls_between_towers` is the number of walls between two towers.
+- Ask if you want to edit wall IDs. If yes:
+    - `Wall Angle ID`
+    - `Wall Straight ID`
+    - `Wall Gate ID (Odd)`
+    - `Wall Gate ID (Even, Left)`
+    - `Wall Gate ID (Even, Right)`
+    - `Wall Tower ID`
+- Ask if you want to have specific elements on both sides of the gate. If yes:
+    - *(0: walls on each side of the gate, 1: towers on each side of the gate, 2: we don't care)*
+    - `Odd Gate`
+    - `Even Gate`
+
 # Planned features
 
-- Make the scripts use `Python` instead of `bash`.
-- Make `town_wall_generator.sh` not need editing.
+- Make `wood_converting_script.sh` use `Python` instead of `bash`.
+- Make `wood_converting_script.sh` support fence gates.
+- Make `wood_converting_script.sh` support doors.
+- Make `wood_converting_script.sh` support more mods:
+    - `Traverse`
+    - `MineFantasy Reforged`
+    - `Spooky Biomes`
