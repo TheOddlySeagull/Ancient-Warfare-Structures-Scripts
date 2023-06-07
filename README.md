@@ -140,3 +140,4 @@ The script will then ask you to input the following values:
     - `Traverse`
     - `MineFantasy Reforged`
     - `Spooky Biomes`
+- make `town_wall_generator.py` use argparse lib for better parameters.
