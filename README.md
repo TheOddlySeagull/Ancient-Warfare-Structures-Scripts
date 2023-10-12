@@ -141,3 +141,17 @@ The script will then ask you to input the following values:
     - `MineFantasy Reforged`
     - `Spooky Biomes`
 - make `town_wall_generator.py` use argparse lib for better parameters.
+
+---
+
+## License
+
+[Creative Commons Attribution 4.0 International License](https://creativecommons.org/licenses/by-nc-sa/4.0/legalcode)
+
+---
+
+## Author Info
+
+- Discord - [TheOddlySeagull](https://discordapp.com/users/374911928428134400)
+- GitHub - [TheOddlySeagull](https://github.com/TheOddlySeagull)
+
